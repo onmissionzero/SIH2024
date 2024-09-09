@@ -1,0 +1,107 @@
+{
+  "Humidity": {
+    "22:30:50": {
+      "-O6MimHePTsirN9T4h3x": 79.0
+    },
+    "22:30:52": {
+      "-O6MimxGqo0n4P1sllhb": 79.0
+    },
+    "22:30:55": {
+      "-O6Minc0LtAtTMJFG3eD": 79.0
+    },
+    "22:30:58": {
+      "-O6MioMfIxXBC7VZcrQC": 79.0
+    },
+    "22:31:01": {
+      "-O6Mip1XeiLnfZMUGIdg": 79.0
+    },
+    "22:31:04": {
+      "-O6MiphOgIGvkq1cLY0k": 79.0
+    },
+    "22:31:06": {
+      "-O6MiqNBWl2hExJskPCm": 79.0
+    },
+    "22:31:09": {
+      "-O6Mir2CSIgSise_fc8k": 79.0
+    },
+    "22:31:12": {
+      "-O6Miri855b1J8A2fFCI": 79.0
+    },
+    "22:31:15": {
+      "-O6MisO345TgXXYVPYOX": 79.0
+    },
+    "22:31:17": {
+      "-O6Mit3489in3vwBcy7j": 79.0
+    }
+  },
+  "Temperature": {
+    "22:30:50": {
+      "-O6MimT1t2F5YLREvNhg": 31.8
+    },
+    "22:30:53": {
+      "-O6Min7_Ucjz-xabswS_": 31.8
+    },
+    "22:30:56": {
+      "-O6MinsD5kdMtNSLoOuy": 31.8
+    },
+    "22:30:59": {
+      "-O6MioY3Zn6bRlgbMs3Y": 31.8
+    },
+    "22:31:02": {
+      "-O6MipCvF-T2YbIqCyTX": 31.8
+    },
+    "22:31:04": {
+      "-O6MipsnbmpTv00UuihG": 31.8
+    },
+    "22:31:07": {
+      "-O6MiqYeT08XJTDWxZ41": 31.8
+    },
+    "22:31:10": {
+      "-O6MirDi2ZsndUKhZH_9": 31.8
+    },
+    "22:31:13": {
+      "-O6MirtanOzBtDmf50EW": 31.8
+    },
+    "22:31:15": {
+      "-O6MisZaVT-C_9h8hnQN": 31.8
+    },
+    "22:31:18": {
+      "-O6MitES1A1jXrCsasQ9": 31.8
+    }
+  },
+  "distance": {
+    "22:30:51": {
+      "-O6MimdM8NpIVH9jhCcR": 228.31
+    },
+    "22:30:54": {
+      "-O6MinJ7kWVJdW9GbnhH": 228.72
+    },
+    "22:30:57": {
+      "-O6Mio2g0sVpoqmHBVB5": 228.74
+    },
+    "22:31:00": {
+      "-O6MioiXS_Of10aTI1Ww": 221.24
+    },
+    "22:31:02": {
+      "-O6MipONbUehx8qhW-wH": 222.5
+    },
+    "22:31:05": {
+      "-O6Miq3CC7X9zYB-bqlx": 207.11
+    },
+    "22:31:08": {
+      "-O6MiqjHZqE6UEj6qhEb": 228.74
+    },
+    "22:31:11": {
+      "-O6MirPDk1UrDSoJJ6KM": 229.55
+    },
+    "22:31:13": {
+      "-O6Mis4Amc2ykO5LTyzu": 229.52
+    },
+    "22:31:16": {
+      "-O6Misk0JqMhUGQvTz7X": 229.55
+    },
+    "22:31:19": {
+      "-O6MitPqgkzLrqu8H4bS": 221.66
+    }
+  }
+}
