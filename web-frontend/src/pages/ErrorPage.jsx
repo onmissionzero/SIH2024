@@ -1,13 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link, useRouteError } from "react-router-dom";
 
-function ErrorPage() {
+function NotFound() {
+    
+    const error = useRouteError();
 
     return (
-        <div>
-            <section>
-                <p>Some Error Occurred</p>
-                <Link to="/">
-                    <p>
+        <div
+        className="bg-black w-full h-screen min-h-max"
+        >
+            <section className="pt-24 flex flex-col items-center text-white font-inter">
+                <p className="text-6xl p-5 font-semibold">Some Error Occured</p>
+                <Link
+                to="/"
+                className="mt-10 rounded-lg transition duration-300 ease-in-out transform hover:scale-110"
+                >
+                    <p className="border-2 border-[#363636] font-medium rounded-lg px-3 py-2 leading-none text-center">
                         Go Back Home
                     </p>
                 </Link>
@@ -16,4 +23,4 @@ function ErrorPage() {
     );
 }
 
-export default ErrorPage;
+export default NotFound
