@@ -7,33 +7,40 @@ const CameraErrors = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const fetchImages = async () => {
+    try {
+      // Create a reference to the 'images' directory
+      const listRef = ref(storage);
+
+      // List all items (files) in the 'images' directory
+      const result = await listAll(listRef);
+
+      // Create an array of promises to get the download URL and metadata for each item
+      const imagePromises = result.items.map(async (itemRef) => {
+        const url = await getDownloadURL(itemRef); // Get the download URL
+        const metadata = await getMetadata(itemRef); // Get the metadata
+        return { url, metadata };
+      });
+
+      // Wait for all promises to resolve
+      const imageData = await Promise.all(imagePromises);
+      setImages(imageData); // Update state with the fetched image data
+    } catch (error) {
+      console.error('Error fetching images:', error);
+    } finally {
+      setLoading(false); // Set loading to false once done
+    }
+  };
+
   useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        // Create a reference to the 'images' directory
-        const listRef = ref(storage);
-
-        // List all items (files) in the 'images' directory
-        const result = await listAll(listRef);
-
-        // Create an array of promises to get the download URL and metadata for each item
-        const imagePromises = result.items.map(async (itemRef) => {
-          const url = await getDownloadURL(itemRef); // Get the download URL
-          const metadata = await getMetadata(itemRef); // Get the metadata
-          return { url, metadata };
-        });
-
-        // Wait for all promises to resolve
-        const imageData = await Promise.all(imagePromises);
-        setImages(imageData); // Update state with the fetched image data
-      } catch (error) {
-        console.error('Error fetching images:', error);
-      } finally {
-        setLoading(false); // Set loading to false once done
-      }
-    };
-
+    // Fetch images on mount
     fetchImages();
+
+    // Set up polling every 10 seconds
+    const intervalId = setInterval(fetchImages, 10000); // Poll every 10 seconds
+
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, []);
 
   if (loading) {
