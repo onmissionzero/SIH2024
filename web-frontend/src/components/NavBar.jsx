@@ -30,7 +30,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="relative z-10">
+    <div className="relative z-20">
       <button
         onClick={toggleNavBar}
         className="text-white p-3 bg-primary rounded-lg focus:outline-none flex items-center justify-center"
@@ -53,29 +53,47 @@ const NavBar = () => {
             </li>
             <li>
               <Link
-                to="/about"
+                to="/visualizations"
                 className="block py-2 px-4 hover:bg-[#202020] rounded-md transition-colors duration-300"
                 onClick={handleLinkClick}
               >
-                About
+                Visualizations
               </Link>
             </li>
             <li>
               <Link
-                to="/services"
+                to="/errors"
                 className="block py-2 px-4 hover:bg-[#202020] rounded-md transition-colors duration-300"
                 onClick={handleLinkClick}
               >
-                Services
+                Errors
               </Link>
             </li>
             <li>
               <Link
-                to="/contact"
+                to="/historical-data"
                 className="block py-2 px-4 hover:bg-[#202020] rounded-md transition-colors duration-300"
                 onClick={handleLinkClick}
               >
-                Contact
+                Historical Data
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/live-footage"
+                className="block py-2 px-4 hover:bg-[#202020] rounded-md transition-colors duration-300"
+                onClick={handleLinkClick}
+              >
+                Live Footage
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/exhibits"
+                className="block py-2 px-4 hover:bg-[#202020] rounded-md transition-colors duration-300"
+                onClick={handleLinkClick}
+              >
+                Exhibits
               </Link>
             </li>
             <li className="block py-2 px-4 bg-red-600 hover:bg-red-900 rounded-md transition-colors duration-300">

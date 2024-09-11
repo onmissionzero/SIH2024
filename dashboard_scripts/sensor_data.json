@@ -1,107 +1,240 @@
 {
   "Humidity": {
-    "22:30:50": {
-      "-O6MimHePTsirN9T4h3x": 79.0
+    "18:18:33": {
+      "-O6QycWJtttWRyVBNZ9B": 52.0
     },
-    "22:30:52": {
-      "-O6MimxGqo0n4P1sllhb": 79.0
+    "18:18:41": {
+      "-O6Qyep8wM3kick3Ux8o": 52.0
     },
-    "22:30:55": {
-      "-O6Minc0LtAtTMJFG3eD": 79.0
+    "18:19:09": {
+      "-O6QylbG8QKVwTfxK39M": 52.0
     },
-    "22:30:58": {
-      "-O6MioMfIxXBC7VZcrQC": 79.0
+    "18:19:28": {
+      "-O6Qypyoar217HNaLwzH": 52.0
     },
-    "22:31:01": {
-      "-O6Mip1XeiLnfZMUGIdg": 79.0
+    "18:21:47": {
+      "-O6QzMzsAEWM2Nhqd_Kw": 52.0
     },
-    "22:31:04": {
-      "-O6MiphOgIGvkq1cLY0k": 79.0
+    "18:22:04": {
+      "-O6QzRGOQfbCPsTPmCpM": 53.0
     },
-    "22:31:06": {
-      "-O6MiqNBWl2hExJskPCm": 79.0
+    "18:22:14": {
+      "-O6QzTUGEwlpR8CN3eFP": 53.0
     },
-    "22:31:09": {
-      "-O6Mir2CSIgSise_fc8k": 79.0
+    "18:22:40": {
+      "-O6QzZpdH19DKwn76hnB": 53.0
     },
-    "22:31:12": {
-      "-O6Miri855b1J8A2fFCI": 79.0
+    "18:23:00": {
+      "-O6QzfyNvDb5ug03VX8Q": 53.0
     },
-    "22:31:15": {
-      "-O6MisO345TgXXYVPYOX": 79.0
+    "18:23:26": {
+      "-O6R-Qz3mhUFHZH3hbzU": 53.0
     },
-    "22:31:17": {
-      "-O6Mit3489in3vwBcy7j": 79.0
+    "18:26:47": {
+      "-O6R-WFGIVCq_k0Y_67W": 53.0
+    },
+    "18:27:17": {
+      "-O6R-dNZCqvUBHFOkCpu": 53.0
+    },
+    "18:27:51": {
+      "-O6R-krO9ZQxbDM3VScq": 53.0
+    },
+    "18:31:25": {
+      "-O6R0_Jx1Z07LPCQ6bEo": 53.0
+    },
+    "18:31:59": {
+      "-O6R0hGQPdf43n9Sm8xf": 53.0
+    },
+    "18:32:57": {
+      "-O6R0xnUoUvs5QQk-tvz": 53.0
     }
   },
   "Temperature": {
-    "22:30:50": {
-      "-O6MimT1t2F5YLREvNhg": 31.8
+    "18:18:34": {
+      "-O6QyctJLDa1znQ0iU_5": 35.2
     },
-    "22:30:53": {
-      "-O6Min7_Ucjz-xabswS_": 31.8
+    "18:18:44": {
+      "-O6QygPvH65H_AWdkIyu": 35.4
     },
-    "22:30:56": {
-      "-O6MinsD5kdMtNSLoOuy": 31.8
+    "18:19:12": {
+      "-O6QymCToLCD50nn1nEQ": 35.6
     },
-    "22:30:59": {
-      "-O6MioY3Zn6bRlgbMs3Y": 31.8
+    "18:19:35": {
+      "-O6QysiEYNi2MriQ1le0": 35.2
     },
-    "22:31:02": {
-      "-O6MipCvF-T2YbIqCyTX": 31.8
+    "18:21:49": {
+      "-O6QzO6mpdtPlhuDNhQA": 35.2
     },
-    "22:31:04": {
-      "-O6MipsnbmpTv00UuihG": 31.8
+    "18:22:06": {
+      "-O6QzRezjkQSK7pHWBOx": 35.2
     },
-    "22:31:07": {
-      "-O6MiqYeT08XJTDWxZ41": 31.8
+    "18:22:15": {
+      "-O6QzU145aHxu75xJ24C": 35.2
     },
-    "22:31:10": {
-      "-O6MirDi2ZsndUKhZH_9": 31.8
+    "18:22:41": {
+      "-O6Qz_BEUZMN9zom2dc6": 35.2
     },
-    "22:31:13": {
-      "-O6MirtanOzBtDmf50EW": 31.8
+    "18:23:11": {
+      "-O6QzgH27P0eJE3q1EBr": 35.2
     },
-    "22:31:15": {
-      "-O6MisZaVT-C_9h8hnQN": 31.8
+    "18:26:32": {
+      "-O6R-SjNMs1KBDDVhR5W": 35.2
     },
-    "22:31:18": {
-      "-O6MitES1A1jXrCsasQ9": 31.8
+    "18:26:54": {
+      "-O6R-XszB9rOpdaL3iB4": 35.2
+    },
+    "18:27:27": {
+      "-O6R-h0Ydag8ornLMx12": 35.2
+    },
+    "18:27:57": {
+      "-O6R-mjKpcK7e_0BSyMn": 35.2
+    },
+    "18:31:27": {
+      "-O6R0aNg1ez2tTKSkPsz": 35.2
+    },
+    "18:32:06": {
+      "-O6R0kWcKPfZFpkpKaXl": 35.2
+    },
+    "18:33:17": {
+      "-O6R1BTFjcCqo6yvvdqv": 35.2
+    }
+  },
+  "current": {
+    "18:18:37": {
+      "-O6Qyd_g7Tw9GC0FZeru": 8.21
+    },
+    "18:18:53": {
+      "-O6QyhfItoG_a_XjizM5": 8.29
+    },
+    "18:19:22": {
+      "-O6Qyoi7Qax0Gjue89pv": 8.1
+    },
+    "18:21:20": {
+      "-O6QzIQo7VCt-6W-fqGL": 8.5
+    },
+    "18:21:55": {
+      "-O6QzOlvCzK_ohhKG2AE": 8.53
+    },
+    "18:22:10": {
+      "-O6QzSaFXcmIC_q4IGhB": 8.5
+    },
+    "18:22:33": {
+      "-O6QzZ1vFhdXNM_v4gyC": 8.47
+    },
+    "18:22:44": {
+      "-O6Qz_rDpNBFc2OP8Wr9": 8.45
+    },
+    "18:23:19": {
+      "-O6QziDitTtbTtZizJX4": 8.6
+    },
+    "18:26:36": {
+      "-O6R-TcnOrKgESeOA0-U": 8.53
+    },
+    "18:27:03": {
+      "-O6R-bI67pEU9Iwc_hw1": 8.37
+    },
+    "18:27:47": {
+      "-O6R-jwkYF3pVMA4FFqD": 8.39
+    },
+    "18:28:22": {
+      "-O6R0UAL1aZB13xeCLtp": 8.37
+    },
+    "18:31:52": {
+      "-O6R0g7jjmSOj-8NyeFd": 8.29
+    },
+    "18:32:41": {
+      "-O6R0t_tYhw_5vGx9ZYj": 8.23
     }
   },
   "distance": {
-    "22:30:51": {
-      "-O6MimdM8NpIVH9jhCcR": 228.31
+    "18:18:39": {
+      "-O6Qye4SSwAHVEIwjOd_": 65.26
     },
-    "22:30:54": {
-      "-O6MinJ7kWVJdW9GbnhH": 228.72
+    "18:19:01": {
+      "-O6QyjcV45kkb2wMQnFV": 1195.85
     },
-    "22:30:57": {
-      "-O6Mio2g0sVpoqmHBVB5": 228.74
+    "18:19:25": {
+      "-O6QypLfjNeapTHJH9if": 1174.22
     },
-    "22:31:00": {
-      "-O6MioiXS_Of10aTI1Ww": 221.24
+    "18:21:30": {
+      "-O6QzKvLN2KJKzD8qCYH": 1195.64
     },
-    "22:31:02": {
-      "-O6MipONbUehx8qhW-wH": 222.5
+    "18:22:01": {
+      "-O6QzQeFjIg7GQNBybmO": 1195.71
     },
-    "22:31:05": {
-      "-O6Miq3CC7X9zYB-bqlx": 207.11
+    "18:22:12": {
+      "-O6QzSyPrbNQ3_Q-Ft8H": 1195.71
     },
-    "22:31:08": {
-      "-O6MiqjHZqE6UEj6qhEb": 228.74
+    "18:22:38": {
+      "-O6QzZO4G5JgZ25cjqyz": 1195.66
     },
-    "22:31:11": {
-      "-O6MirPDk1UrDSoJJ6KM": 229.55
+    "18:22:51": {
+      "-O6QzbfAc321IJkx5khJ": 1195.63
     },
-    "22:31:13": {
-      "-O6Mis4Amc2ykO5LTyzu": 229.52
+    "18:23:20": {
+      "-O6Qzj1VGWcmleKfm5-y": 1195.85
     },
-    "22:31:16": {
-      "-O6Misk0JqMhUGQvTz7X": 229.55
+    "18:26:38": {
+      "-O6R-UAObLvtTk3EmwOW": 1195.8
     },
-    "22:31:19": {
-      "-O6MitPqgkzLrqu8H4bS": 221.66
+    "18:27:14": {
+      "-O6R-bsKMav_07ct_zJs": 1195.75
+    },
+    "18:27:49": {
+      "-O6R-kMbKhFXBYGh_mT2": 1195.81
+    },
+    "18:31:02": {
+      "-O6R0ZNS22bRyGUCi0um": 1195.93
+    },
+    "18:31:55": {
+      "-O6R0ge3L5rFfv1Au5iJ": 1195.86
+    },
+    "18:32:51": {
+      "-O6R0utwn9FWHzlC7oec": 1195.71
+    }
+  },
+  "irValue": {
+    "18:18:36": {
+      "-O6QydC4N8l1NvXR-AeL": 1.0
+    },
+    "18:18:50": {
+      "-O6Qyh4vf_mKjv3A8pAy": 1.0
+    },
+    "18:19:14": {
+      "-O6QymwF8dPtoqSTW1_Q": 1.0
+    },
+    "18:21:53": {
+      "-O6QzOS2meCwEbbAPIx7": 1.0
+    },
+    "18:22:08": {
+      "-O6QzS880zdTqSHXjc28": 1.0
+    },
+    "18:22:23": {
+      "-O6QzWQ9H7cVmTVCGGW7": 1.0
+    },
+    "18:22:43": {
+      "-O6Qz_VbdhjX64lHqR7I": 1.0
+    },
+    "18:23:17": {
+      "-O6QzhvSIhrgT3sEA2lG": 1.0
+    },
+    "18:26:35": {
+      "-O6R-TAqwWVW2btgjSyH": 1.0
+    },
+    "18:26:56": {
+      "-O6R-YMNfW5ytR97pYRW": 1.0
+    },
+    "18:27:37": {
+      "-O6R-jPIaV9u8tf2u9_S": 1.0
+    },
+    "18:28:05": {
+      "-O6R-sBoCN_29jmLrlas": 1.0
+    },
+    "18:31:36": {
+      "-O6R0eD_ETca2626Qv-G": 1.0
+    },
+    "18:32:19": {
+      "-O6R0q1zH_Ah8k95jaRI": 1.0
     }
   }
 }

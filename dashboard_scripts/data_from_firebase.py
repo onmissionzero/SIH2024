@@ -8,7 +8,7 @@ import csv
 def initialize_firebase():
     cred = credentials.Certificate('credentials.json')  # Path to your service account key
     firebase_admin.initialize_app(cred, {
-        'databaseURL': 'URL'  # Your database URL
+        'databaseURL': 'https://hackelite-museum-default-rtdb.asia-southeast1.firebasedatabase.app'  # Your database URL
     })
 
 # Fetch data from Firebase Realtime Database
