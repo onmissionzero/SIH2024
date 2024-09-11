@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNotification } from '../contexts/NotificationContext';
 
 const Notification = () => {
   const { notifications } = useNotification();
+  const [localNotifications, setLocalNotifications] = useState(notifications);
 
-  if (notifications.length === 0) return null;
+  useEffect(() => {
+    setLocalNotifications(notifications);
+  }, [notifications]);
 
   return (
     <div className="notification-container">
-      {notifications.map((notification, index) => (
+      {localNotifications.map(notification => (
         <div
-          key={index}
-          className={`notification ${notification.type}`}
-          // Assuming you have CSS classes for different notification types
+          key={notification.id}
+          className={`notification ${notification.type} ${notification.dismissed ? 'fade-out' : ''}`}
         >
           {notification.message}
         </div>

@@ -43,14 +43,13 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-    <ProfileProvider>
-        <NotificationProvider>
-            <ErrorProvider>
-                <RouterProvider router={router} />
-                <Notification /> {/* Render Notification component */}
-            </ErrorProvider>
-        </NotificationProvider>
-    </ProfileProvider>
-</React.StrictMode>
-
+        <ProfileProvider>
+            <NotificationProvider>
+                <ErrorProvider>
+                    <RouterProvider router={router} />
+                    <Notification /> {/* Render Notification component */}
+                </ErrorProvider>
+            </NotificationProvider>
+        </ProfileProvider>
+    </React.StrictMode>
 );

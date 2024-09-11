@@ -5,3 +5,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.notification-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+  }
+  
+  .notification {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 4px;
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.5s ease-out; /* Smooth fade-out effect */
+  }
+  
+  .notification.error {
+    background-color: #f44336; /* Red for errors */
+  }
+  
+  .notification.info {
+    background-color: #f44336; /* Blue for info */
+  }
+  
+  /* Optional: To ensure notifications fade out smoothly */
+  .notification-container .notification {
+    opacity: 1;
+  }
+  .notification-container .notification.fade-out {
+    opacity: 0;
+  }
+  
