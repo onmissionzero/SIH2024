@@ -10,12 +10,15 @@ import ErrorPage from './pages/ErrorPage';
 import { ProfileProvider } from './contexts/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import { NotificationProvider } from './contexts/NotificationContext'; // Import NotificationProvider
+import { ErrorProvider } from './contexts/ErrorContext'; // Import ErrorProvider
 
 import './index.css';
 import LiveFootage from './pages/LiveFootage';
 import Historical from './pages/Historical';
 import Exhibits from './pages/Exhibits';
 import Errors from './pages/Errors';
+import Notification from './components/Notification'; // Import the Notification component
+import CameraErrors from './pages/CameraErrors';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -30,6 +33,7 @@ const router = createBrowserRouter(
                 <Route path="live-footage" element={<PrivateRoute element={<LiveFootage />} />} />
                 <Route path="historical-data" element={<PrivateRoute element={<Historical />} />} />
                 <Route path="exhibits" element={<PrivateRoute element={<Exhibits />} />} />
+                <Route path="camera-error" element={<PrivateRoute element={<CameraErrors />} />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
@@ -39,10 +43,14 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <ProfileProvider>
-            <NotificationProvider>
+    <ProfileProvider>
+        <NotificationProvider>
+            <ErrorProvider>
                 <RouterProvider router={router} />
-            </NotificationProvider>
-        </ProfileProvider>
-    </React.StrictMode>
+                <Notification /> {/* Render Notification component */}
+            </ErrorProvider>
+        </NotificationProvider>
+    </ProfileProvider>
+</React.StrictMode>
+
 );

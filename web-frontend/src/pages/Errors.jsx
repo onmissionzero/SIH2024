@@ -1,36 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { database, ref, onValue } from '../utils/firebasedb';
+import React from 'react';
+import { useError } from '../contexts/ErrorContext';
 import { FaExclamationTriangle, FaExclamationCircle } from 'react-icons/fa';
-import { useNotification } from '../contexts/NotificationContext'; // Import the hook
 
 const SensorData = () => {
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { addNotification } = useNotification(); // Use the hook
-
-  useEffect(() => {
-    const errorsRef = ref(database, 'errors');
-
-    const handleValueChange = (snapshot) => {
-      const data = snapshot.val();
-      setErrors(data || {});
-      setLoading(false);
-    };
-
-    const handleError = (err) => {
-      console.error("Error fetching data: ", err);
-      setError("Failed to load data.");
-      addNotification("Failed to load error data", 'error'); // Trigger notification
-      setLoading(false);
-    };
-
-    onValue(errorsRef, handleValueChange, handleError);
-
-    return () => {
-      // Cleanup if needed
-    };
-  }, [addNotification]);
+  const { errors, loading } = useError();
 
   const formatTime = (time24) => {
     try {
@@ -63,17 +36,6 @@ const SensorData = () => {
         <div className="text-center py-12">
           <FaExclamationTriangle className="text-gray-500 text-6xl mx-auto mb-4 animate-spin" />
           <p className="text-gray-600 text-lg font-medium">Loading data...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="p-6 max-w-4xl mx-auto bg-gradient-to-r from-red-200 via-red-300 to-red-400 rounded-lg shadow-lg">
-        <div className="text-center py-12">
-          <FaExclamationTriangle className="text-red-600 text-6xl mx-auto mb-4" />
-          <p className="text-red-700 text-lg font-medium">{error}</p>
         </div>
       </div>
     );
