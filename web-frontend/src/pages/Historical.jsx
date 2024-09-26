@@ -1,68 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import Papa from 'papaparse';
+import { database, ref, get } from '../utils/firebasedb';
 import { FaCalendarAlt, FaFilter } from 'react-icons/fa';
 
-// Function to format 24-hour time to 12-hour time
-const formatTime = (time24) => {
-  const [hours, minutes] = time24.split(':').map(Number);
-  const period = hours >= 12 ? 'PM' : 'AM';
-  const hours12 = hours % 12 || 12;
-  return `${hours12}:${minutes.toString().padStart(2, '0')} ${period}`;
+// Function to format timestamp
+const formatTimestamp = (timestamp) => {
+  const date = new Date(timestamp);
+  return date.toLocaleString(); // Formats to a readable date-time string
 };
 
-// Function to parse and compare times
-const isTimeInRange = (time24, start, end) => {
-  const [hours, minutes] = time24.split(':').map(Number);
-  const time = new Date(0, 0, 0, hours, minutes); // Create a Date object for comparison
-  const [startHours, startMinutes] = start.split(':').map(Number);
-  const [endHours, endMinutes] = end.split(':').map(Number);
-  const startTime = new Date(0, 0, 0, startHours, startMinutes);
-  const endTime = new Date(0, 0, 0, endHours, endMinutes);
-  return time >= startTime && time <= endTime;
+// Function to check if time is in range
+const isTimeInRange = (time, start, end) => {
+  const date = new Date(time);
+  const startTime = new Date(date);
+  startTime.setHours(...start.split(':').map(Number));
+  const endTime = new Date(date);
+  endTime.setHours(...end.split(':').map(Number));
+  return date >= startTime && date <= endTime;
 };
 
 const CsvTable = () => {
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState({});
+  const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [startTime, setStartTime] = useState('00:00');
   const [endTime, setEndTime] = useState('23:59');
   const [searchValue, setSearchValue] = useState('');
+  const [separateTables, setSeparateTables] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const csvUrl = 'sensor_data.csv'; // Replace with your CSV file URL
-
       try {
-        const response = await fetch(csvUrl);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+        const dbRef = ref(database, 'sensor-data');
+        const snapshot = await get(dbRef);
+        if (snapshot.exists()) {
+          const rawData = snapshot.val();
+          const formattedData = Object.values(rawData);
+          setData(formattedData);
+          setFilteredData(formattedData);
+        } else {
+          setError('No data available');
         }
-        const csvText = await response.text();
-        Papa.parse(csvText, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (results) => {
-            const groupedData = results.data.reduce((acc, row) => {
-              if (!acc[row.Category]) {
-                acc[row.Category] = [];
-              }
-              acc[row.Category].push(row);
-              return acc;
-            }, {});
-
-            setData(groupedData);
-            setFilteredData(groupedData);
-            setLoading(false);
-          },
-          error: (error) => {
-            setError(error.message);
-            setLoading(false);
-          }
-        });
-      } catch (error) {
-        setError(error.message);
+      } catch (err) {
+        setError(err.message);
+      } finally {
         setLoading(false);
       }
     };
@@ -71,41 +52,30 @@ const CsvTable = () => {
   }, []);
 
   useEffect(() => {
-    let tempData = { ...data };
+    let tempData = data;
 
     // Filter by time range
-    Object.keys(tempData).forEach(category => {
-      tempData[category] = tempData[category].filter(row => isTimeInRange(row.Timestamp, startTime, endTime));
-    });
+    tempData = tempData.filter(row => isTimeInRange(row.timestamp, startTime, endTime));
 
-    // Search by value
+    // Search by value in any sensor data
     if (searchValue) {
-      Object.keys(tempData).forEach(category => {
-        tempData[category] = tempData[category].filter(row => row.Value.toString().includes(searchValue));
-      });
+      tempData = tempData.filter(row => 
+        Object.values(row).some(value => value.toString().includes(searchValue))
+      );
     }
 
     setFilteredData(tempData);
   }, [data, startTime, endTime, searchValue]);
 
-  // Reset time filter
-  const resetTimeFilter = () => {
+  const resetFilters = () => {
     setStartTime('00:00');
     setEndTime('23:59');
-    // Reapply filtering with default time range
-    let tempData = { ...data };
-    Object.keys(tempData).forEach(category => {
-      tempData[category] = tempData[category].filter(row => isTimeInRange(row.Timestamp, '00:00', '23:59'));
-    });
+    setSearchValue('');
+  };
 
-    // Apply search filter
-    if (searchValue) {
-      Object.keys(tempData).forEach(category => {
-        tempData[category] = tempData[category].filter(row => row.Value.toString().includes(searchValue));
-      });
-    }
-
-    setFilteredData(tempData);
+  // Function to get unique sensor keys dynamically
+  const getUniqueSensorKeys = () => {
+    return [...new Set(data.flatMap(Object.keys))].filter(key => key !== 'timestamp');
   };
 
   return (
@@ -136,11 +106,20 @@ const CsvTable = () => {
                     />
                   </div>
                   <button
-                    onClick={resetTimeFilter}
+                    onClick={resetFilters}
                     className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition"
                   >
-                    Reset Time Filter
+                    Reset Filters
                   </button>
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      checked={separateTables}
+                      onChange={() => setSeparateTables(!separateTables)}
+                      className="mr-2"
+                    />
+                    Separate Tables
+                  </label>
                 </div>
               </div>
               <div className="flex items-center mb-8">
@@ -154,11 +133,13 @@ const CsvTable = () => {
                 />
               </div>
             </div>
-            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {Object.keys(filteredData).map((category) => (
-                <div key={category} className="bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="text-3xl font-semibold mb-4 text-gray-800">{category}</h3>
-                  <div className="overflow-x-auto">
+
+            {/* Conditional Rendering based on toggle */}
+            <div className={separateTables ? "flex flex-wrap gap-4" : "overflow-x-auto"}>
+              {separateTables ? (
+                getUniqueSensorKeys().map(sensor => (
+                  <div key={sensor} className="flex-1 min-w-[300px] max-w-[400px] mb-4">
+                    <h3 className="text-2xl font-semibold mb-4 text-gray-800">{sensor.replace('_', ' ').toUpperCase()}</h3>
                     <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
                       <thead className="bg-gray-100 border-b border-gray-200">
                         <tr>
@@ -167,17 +148,42 @@ const CsvTable = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {filteredData[category].map((row, index) => (
+                        {filteredData.map((row, index) => (
                           <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                            <td className="py-2 px-4 border-b border-gray-200 text-gray-700">{formatTime(row.Timestamp)}</td>
-                            <td className="py-2 px-4 border-b border-gray-200 text-gray-700">{row.Value}</td>
+                            <td className="py-2 px-4 border-b border-gray-200 text-gray-700">{formatTimestamp(row.timestamp)}</td>
+                            <td className="py-2 px-4 border-b border-gray-200 text-gray-700">{row[sensor]}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
+                  <thead className="bg-gray-100 border-b border-gray-200">
+                    <tr>
+                      <th className="py-3 px-4 text-left text-gray-700">Timestamp</th>
+                      {getUniqueSensorKeys().map((sensor) => (
+                        <th key={sensor} className="py-3 px-4 text-left text-gray-700">
+                          {sensor.replace('_', ' ').toUpperCase()}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredData.map((row, index) => (
+                      <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                        <td className="py-2 px-4 border-b border-gray-200 text-gray-700">{formatTimestamp(row.timestamp)}</td>
+                        {getUniqueSensorKeys().map(sensor => (
+                          <td key={sensor} className="py-2 px-4 border-b border-gray-200 text-gray-700">
+                            {row[sensor]}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
             </div>
           </>
         )}

@@ -8,17 +8,16 @@ import Visualizations from './pages/Visualizations';
 import NotFound from './pages/NotFound';
 import ErrorPage from './pages/ErrorPage';
 import { ProfileProvider } from './contexts/Profile';
+import { ErrorProvider } from './contexts/ErrorContext';
 import PrivateRoute from './components/PrivateRoute';
-import { NotificationProvider } from './contexts/NotificationContext'; // Import NotificationProvider
-import { ErrorProvider } from './contexts/ErrorContext'; // Import ErrorProvider
 
 import './index.css';
 import LiveFootage from './pages/LiveFootage';
 import Historical from './pages/Historical';
 import Exhibits from './pages/Exhibits';
 import Errors from './pages/Errors';
-import Notification from './components/Notification'; // Import the Notification component
 import CameraErrors from './pages/CameraErrors';
+import SensorDataVisualization from './pages/Lifetime';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -30,6 +29,7 @@ const router = createBrowserRouter(
                 />
                 <Route path="visualizations" element={<PrivateRoute element={<Visualizations />} />} />
                 <Route path="errors" element={<PrivateRoute element={<Errors />} />} />
+                <Route path="lifetime" element={<PrivateRoute element={<SensorDataVisualization />} />} />
                 <Route path="live-footage" element={<PrivateRoute element={<LiveFootage />} />} />
                 <Route path="historical-data" element={<PrivateRoute element={<Historical />} />} />
                 <Route path="exhibits" element={<PrivateRoute element={<Exhibits />} />} />
@@ -44,12 +44,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <ProfileProvider>
-            <NotificationProvider>
-                <ErrorProvider>
-                    <RouterProvider router={router} />
-                    <Notification /> {/* Render Notification component */}
-                </ErrorProvider>
-            </NotificationProvider>
+            <ErrorProvider>
+                <RouterProvider router={router} />
+            </ErrorProvider>
         </ProfileProvider>
     </React.StrictMode>
 );

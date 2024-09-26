@@ -5,6 +5,7 @@ import { FaCamera } from 'react-icons/fa';
 const CameraFootage = () => {
   const [exhibits, setExhibits] = useState([]);
   const videoRefs = useRef([]); // Use an array to store refs for multiple video elements
+  const streamRef = useRef(null); // Store the media stream for cleanup
 
   // Fetch exhibits from Firebase on component mount
   useEffect(() => {
@@ -29,6 +30,7 @@ const CameraFootage = () => {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         try {
           const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+          streamRef.current = stream; // Store the stream in a ref
           videoRefs.current.forEach(videoRef => {
             if (videoRef) {
               videoRef.srcObject = stream;
@@ -42,6 +44,24 @@ const CameraFootage = () => {
     };
 
     startWebcam();
+
+    // Cleanup function to stop the stream on unmount
+    return () => {
+      if (streamRef.current) {
+        const tracks = streamRef.current.getTracks();
+        tracks.forEach(track => {
+          track.stop(); // Stop each track
+        });
+        streamRef.current = null; // Clear the stream ref
+
+        // Clear the srcObject for each video element
+        videoRefs.current.forEach(videoRef => {
+          if (videoRef) {
+            videoRef.srcObject = null; // Clear the video srcObject
+          }
+        });
+      }
+    };
   }, []);
 
   return (

@@ -5,9 +5,6 @@ import { FaChartBar, FaEye, FaHistory, FaVideo } from 'react-icons/fa';
 import { Bar, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, LineElement, PointElement } from 'chart.js';
 
-// Register Chart.js components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, LineElement, PointElement);
-
 const Home = () => {
   const { user } = useProfile();
   const navigate = useNavigate();
@@ -16,34 +13,6 @@ const Home = () => {
     navigate('/login');
     return null;
   }
-
-  // Sample data for charts
-  const barChartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-    datasets: [
-      {
-        label: 'Visitor Count',
-        data: [1200, 1500, 1700, 1600, 1800, 2000, 2200],
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const lineChartData = {
-    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-    datasets: [
-      {
-        label: 'Exhibit Visits',
-        data: [30, 45, 55, 40],
-        fill: false,
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        tension: 0.1,
-      },
-    ],
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-400 to-teal-400">
@@ -94,40 +63,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Graphical Visualizations */}
-      <section className="py-12 bg-white">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-gray-100 rounded-lg shadow-lg p-6">
-            <h3 className="text-2xl font-semibold mb-4">Visitor Count by Month</h3>
-            <Bar data={barChartData} options={{ responsive: true, plugins: { legend: { display: true } } }} />
-          </div>
-          <div className="bg-gray-100 rounded-lg shadow-lg p-6">
-            <h3 className="text-2xl font-semibold mb-4">Exhibit Visits Over Time</h3>
-            <Line data={lineChartData} options={{ responsive: true, plugins: { legend: { display: true } } }} />
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Stats */}
-      <section className="py-12 bg-white">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-gradient-to-r from-pink-400 to-purple-500 text-white rounded-lg shadow-lg p-6">
-            <h3 className="text-2xl font-semibold mb-4">Recent Updates</h3>
-            <ul className="list-disc list-inside">
-              <li>New exhibit launched: Ancient Egypt</li>
-              <li>Visitor count increased by 15%</li>
-              <li>New CCTV cameras installed in Gallery 5</li>
-            </ul>
-          </div>
-          <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg shadow-lg p-6">
-            <h3 className="text-2xl font-semibold mb-4">Quick Stats</h3>
-            <p className="text-lg">Today&apos;s Visitors: <span className="font-bold">1,234</span></p>
-            <p className="text-lg">Exhibits Open: <span className="font-bold">25</span></p>
-            <p className="text-lg">Active Monitoring Systems: <span className="font-bold">8</span></p>
-          </div>
-        </div>
-      </section>
+      <iframe src="http://localhost/Reports/powerbi/SIH2024_Home?rs:embed=true" className="w-full h-screen">
+      <p>No support for iframes.</p>
+    </iframe>/ 
     </div>
   );
 };

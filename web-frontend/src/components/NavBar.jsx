@@ -71,6 +71,15 @@ const NavBar = () => {
             </li>
             <li>
               <Link
+                to="/lifetime"
+                className="block py-2 px-4 hover:bg-[#202020] rounded-md transition-colors duration-300"
+                onClick={handleLinkClick}
+              >
+                Lifetime
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/camera-error"
                 className="block py-2 px-4 hover:bg-[#202020] rounded-md transition-colors duration-300"
                 onClick={handleLinkClick}
